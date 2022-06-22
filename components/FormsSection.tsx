@@ -1,8 +1,13 @@
 import { Button, Stack, TextField } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addNoteActionRequest } from "../redux/actions";
+import { getDataList } from "../redux/reducers";
 import { INoteDataReq } from "../types/DTO/req";
 
 export default function FormsSection() {
+  const dispatch = useDispatch();
+
   const style = {
     bgcolor: "#eeeeee",
     padding: 2,
@@ -11,11 +16,17 @@ export default function FormsSection() {
     minHeight: "20rem",
   };
 
+  const nostsState = useSelector(getDataList);
+
   const [state, setState] = React.useState<INoteDataReq["req"]>({
     id: Math.random().toString(32).slice(2),
     title: "",
     description: "",
   });
+
+  useEffect(() => {
+    console.log("notes state:", nostsState);
+  }, [nostsState]);
 
   //handlers
   const handlerInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,12 +38,12 @@ export default function FormsSection() {
   };
 
   const handlerAddNote = () => {
-    console.log("submit", state);
-    setState(()=>({
-        id: Math.random().toString(32).slice(2),
-        title: '',
-        description: ''
-    }))
+    setState(() => ({
+      id: Math.random().toString(32).slice(2),
+      title: "",
+      description: "",
+    }));
+    dispatch(addNoteActionRequest(state));
   };
 
   return (
