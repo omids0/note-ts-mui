@@ -21,7 +21,7 @@ export default function ListSection() {
       )}
       {notesState &&
         notesState.length > 0 &&
-        notesState.map((item) => <EachNote />)}
+        notesState.map((note) => <EachNote key={note.id} {...note} />)}
     </Stack>
   );
 }
