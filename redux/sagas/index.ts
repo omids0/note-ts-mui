@@ -3,10 +3,14 @@ import {
   addNoteActionRequest,
   removeNoteActionRequest,
   removeNoteActionSuccess,
+  updateNoteActionRequest,
+  updateNoteActionSuccess,
 } from "../actions";
 import ActionCasess from "../types";
 import { getNoteActionSuccess } from "./../actions/index";
 
+
+//ADD
 function* addNoteAction({ payload }: ReturnType<typeof addNoteActionRequest>) {
   try {
     yield put(getNoteActionSuccess(payload));
@@ -15,6 +19,8 @@ function* addNoteAction({ payload }: ReturnType<typeof addNoteActionRequest>) {
   }
 }
 
+
+//REMOVE
 function* removeNoteAction({
   payload,
 }: ReturnType<typeof removeNoteActionRequest>) {
@@ -25,9 +31,23 @@ function* removeNoteAction({
   }
 }
 
+//UPDATE
+function* updateNoteAction({
+  payload,
+  so,
+}: ReturnType<typeof updateNoteActionRequest>) {
+  try {
+    yield put(updateNoteActionSuccess(payload));
+    so?.(false)
+  } catch (error) {
+    console.log("updateNoteAction", error);
+  }
+}
+
 export function* rootSaga() {
   yield all([
     takeEvery(ActionCasess.ADD_NOTE_REQUEST, addNoteAction),
     takeEvery(ActionCasess.REMOVE_NOTE_REQUEST, removeNoteAction),
+    takeEvery(ActionCasess.UPDATE_NOTE_REQUEST, updateNoteAction),
   ]);
 }

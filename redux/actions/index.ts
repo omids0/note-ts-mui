@@ -24,10 +24,23 @@ export const removeNoteActionSuccess = (payload: INoteDataReq["req"]) => ({
 });
 
 //UPDATE NOTE
+export const updateNoteActionRequest = (
+  payload: INoteDataReq["req"],
+  so: React.Dispatch<React.SetStateAction<boolean>>
+) => ({
+  type: ActionCasess.UPDATE_NOTE_REQUEST,
+  payload,
+  so,
+});
+export const updateNoteActionSuccess = (payload: INoteDataReq["req"]) => ({
+  type: ActionCasess.UPDATE_NOTE_SUCCESS,
+  payload,
+});
 
 type TAction =
   | ReturnType<typeof getNoteActionSuccess>
   | ReturnType<typeof removeNoteActionRequest>
-  | ReturnType<typeof addNoteActionRequest>;
+  | ReturnType<typeof addNoteActionRequest>
+  | ReturnType<typeof updateNoteActionRequest>;
 
 export default TAction;

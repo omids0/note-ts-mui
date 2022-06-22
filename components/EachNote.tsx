@@ -3,7 +3,10 @@ import React, { FC, useState } from "react";
 import { INoteDataReq } from "../types/DTO/req";
 import { INoteDataRes } from "../types/DTO/res";
 import { useDispatch } from "react-redux";
-import { removeNoteActionRequest } from "../redux/actions";
+import {
+  removeNoteActionRequest,
+  updateNoteActionRequest,
+} from "../redux/actions";
 
 interface INoteItemProps {
   id: INoteDataRes["data"][0]["id"];
@@ -47,12 +50,13 @@ const EachNote: FC<INoteItemProps> = (props) => {
   };
 
   const handlerUpdate = () => {
-    console.log("update");
+    console.log('update',state);
+    dispatch(updateNoteActionRequest(state, setOpen))
   };
 
   const handlerRemove = () => {
     console.log("remove");
-    dispatch(removeNoteActionRequest(state))
+    dispatch(removeNoteActionRequest(state));
   };
 
   return (

@@ -23,6 +23,15 @@ const reducer: Reducer<INoteDataRes, TAction> = (state = iState, action) => {
         data,
       };
     }
+    case ActionCasess.UPDATE_NOTE_SUCCESS: {
+      const data = state.data.map((note) =>
+        note.id === action.payload.id ? action.payload : note
+      );
+      return {
+        ...state,
+        data,
+      };
+    }
     default:
       return state;
   }
