@@ -5,13 +5,14 @@ import ListSection from "./ListSection";
 
 export default function HomePage() {
   const style = {
-    width: "100%",
+    maxWidth: '90rem',
     minHeight: "100vh",
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     padding: 4,
+    margin: '0 auto'
   };
 
   return (

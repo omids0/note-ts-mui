@@ -13,6 +13,9 @@ export const addNoteActionRequest = (payload: INoteDataReq["req"]) => ({
   payload,
 });
 
+//REMOVE NOTE
+
+
 type TAction =
   | ReturnType<typeof getNoteActionSuccess>
   | ReturnType<typeof addNoteActionRequest>;

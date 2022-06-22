@@ -38,12 +38,16 @@ export default function FormsSection() {
   };
 
   const handlerAddNote = () => {
-    setState(() => ({
-      id: Math.random().toString(32).slice(2),
-      title: "",
-      description: "",
-    }));
-    dispatch(addNoteActionRequest(state));
+    if (!state.title && !state.description) {
+      alert("Please fill title or description...");
+    } else {
+      setState(() => ({
+        id: Math.random().toString(32).slice(2),
+        title: "",
+        description: "",
+      }));
+      dispatch(addNoteActionRequest(state));
+    }
   };
 
   return (
