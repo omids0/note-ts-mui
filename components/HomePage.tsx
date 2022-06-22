@@ -1,5 +1,7 @@
 import { Box, Stack } from "@mui/material";
 import React from "react";
+import FormsSection from "./FormsSection";
+import ListSection from "./ListSection";
 
 export default function HomePage() {
   const style = {
@@ -7,13 +9,15 @@ export default function HomePage() {
     minHeight: "100vh",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
+    padding: 4,
   };
-  
+
   return (
     <Stack sx={style}>
-      <Box>test</Box>
+      <FormsSection />
+      <ListSection />
     </Stack>
   );
 }
