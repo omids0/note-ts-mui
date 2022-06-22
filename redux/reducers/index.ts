@@ -3,9 +3,12 @@ import { INoteDataRes } from "../../types/DTO/res";
 import TAction from "./../actions/index";
 import ActionCasess from "../types";
 import { RootState } from "../../types/DTO/redux";
+import  Cookies  from 'js-cookie';
+
+const localData = Cookies.get('tsNote') ? JSON.parse(Cookies.get('tsNote')!) : []
 
 const iState: INoteDataRes = {
-  data: [],
+  data: localData,
 };
 
 const reducer: Reducer<INoteDataRes, TAction> = (state = iState, action) => {
