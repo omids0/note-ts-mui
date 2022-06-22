@@ -2,6 +2,8 @@ import { Box, Button, Card, Modal, Stack, TextField } from "@mui/material";
 import React, { FC, useState } from "react";
 import { INoteDataReq } from "../types/DTO/req";
 import { INoteDataRes } from "../types/DTO/res";
+import { useDispatch } from "react-redux";
+import { removeNoteActionRequest } from "../redux/actions";
 
 interface INoteItemProps {
   id: INoteDataRes["data"][0]["id"];
@@ -11,6 +13,8 @@ interface INoteItemProps {
 }
 
 const EachNote: FC<INoteItemProps> = (props) => {
+  const dispatch = useDispatch();
+
   const { id, description, title, ...rest } = props;
   const [state, setState] = React.useState<INoteDataReq["req"]>({
     id,
@@ -40,15 +44,16 @@ const EachNote: FC<INoteItemProps> = (props) => {
       ...perv,
       [e.target.name]: e.target.value,
     }));
-  }; 
+  };
 
   const handlerUpdate = () => {
-    console.log('update');
-  }
+    console.log("update");
+  };
 
   const handlerRemove = () => {
-    console.log('remove');
-  }
+    console.log("remove");
+    dispatch(removeNoteActionRequest(state))
+  };
 
   return (
     <Card sx={{ margin: "1rem" }}>
@@ -82,17 +87,17 @@ const EachNote: FC<INoteItemProps> = (props) => {
             onChange={handlerInput}
             sx={{ backgroundColor: "#ffffff" }}
           />
-          <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Button
               variant="contained"
-              sx={{ margin: "3rem 0" , bgcolor: 'green'}}
+              sx={{ margin: "3rem 0", bgcolor: "green" }}
               onClick={handlerUpdate}
             >
               Update Note
             </Button>
             <Button
               variant="contained"
-              sx={{ margin: "3rem 0", bgcolor: 'red' }}
+              sx={{ margin: "3rem 0", bgcolor: "red" }}
               onClick={handlerRemove}
             >
               Remove Note

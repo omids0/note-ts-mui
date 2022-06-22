@@ -5,18 +5,22 @@ import ActionCasess from "../types";
 import { RootState } from "../../types/DTO/redux";
 
 const iState: INoteDataRes = {
-    data: []
-}
+  data: [],
+};
 
-const reducer: Reducer<INoteDataRes, TAction> = (
-  state = iState,
-  action
-) => {
+const reducer: Reducer<INoteDataRes, TAction> = (state = iState, action) => {
   switch (action.type) {
     case ActionCasess.GET_NOTE_SUCCESS: {
       return {
         ...state,
         data: [...state.data, action.payload],
+      };
+    }
+    case ActionCasess.REMOVE_NOTE_SUCCESS: {
+      const data = state.data.filter((note) => note.id !== action.payload.id);
+      return {
+        ...state,
+        data,
       };
     }
     default:

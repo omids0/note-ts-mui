@@ -14,10 +14,20 @@ export const addNoteActionRequest = (payload: INoteDataReq["req"]) => ({
 });
 
 //REMOVE NOTE
+export const removeNoteActionRequest = (payload: INoteDataReq["req"]) => ({
+  type: ActionCasess.REMOVE_NOTE_REQUEST,
+  payload,
+});
+export const removeNoteActionSuccess = (payload: INoteDataReq["req"]) => ({
+  type: ActionCasess.REMOVE_NOTE_SUCCESS,
+  payload,
+});
 
+//UPDATE NOTE
 
 type TAction =
   | ReturnType<typeof getNoteActionSuccess>
+  | ReturnType<typeof removeNoteActionRequest>
   | ReturnType<typeof addNoteActionRequest>;
 
 export default TAction;
