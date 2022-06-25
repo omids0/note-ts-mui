@@ -79,7 +79,7 @@ const EachNote: FC<INoteItemProps> = (props) => {
       {...(checked ? { timeout: 500 } : {})}
     >
       <Card sx={{ margin: "1rem" }}>
-        <Stack sx={{ padding: "1rem", bgcolor: "#eeeeee" }}>{title}</Stack>
+        <Stack sx={{ padding: "1rem", bgcolor: "#eeeeee", fontWeight: 'bold' }}>{title}</Stack>
         <Stack sx={{ padding: "1rem" }} onClick={() => setOpen(!open)}>
           {description}
         </Stack>
