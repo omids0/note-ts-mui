@@ -94,14 +94,14 @@ const EachNote: FC<INoteItemProps> = (props) => {
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Button
               variant="contained"
-              sx={{ margin: "3rem 0", bgcolor: "green" }}
+              sx={{ margin: "3rem 0 0", bgcolor: "green" }}
               onClick={handlerUpdate}
             >
               Update Note
             </Button>
             <Button
               variant="contained"
-              sx={{ margin: "3rem 0", bgcolor: "red" }}
+              sx={{ margin: "3rem 0 0", bgcolor: "red" }}
               onClick={handlerRemove}
             >
               Remove Note
